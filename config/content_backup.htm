@@ -25,7 +25,7 @@
 <p>網站連結: <a href="https://mde.tw/cp2021_hw">https://mde.tw/cp2021_hw</a></p>
 <p>其他與個人或作業相關資料說明或介紹:</p>
 <p>mdecourse 所屬的實驗室: <a href="https://mde.tw">https://mde.tw</a></p>
-<h2>run4</h2>
+<h2>run</h2>
 <!-- 導入 brython 程式庫 -->
 <script src="/static/brython.js"></script>
 <script src="/static/brython_stdlib.js"></script>
@@ -185,7 +185,17 @@ Exit</pre>
 <p style="padding-left: 30px;">由於數位檔案很容易被改造, 因此在製作數位檔案內容時, 在 Windows 平台上可以利用 Gpg4win 加密或保全.</p>
 <p style="padding-left: 30px;">GnuPG 加密</p>
 <p style="padding-left: 30px;">GnuPG 保全 - 在網站提供檔案下載前, 利用 Gpg4win 對檔案進行數位簽章</p>
-<h1>HW1</h1>
+<h1>Brython</h1>
+<!-- 導入 brython 程式庫 -->
+<script src="/static/brython.js"></script>
+<script src="/static/brython_stdlib.js"></script>
+<!-- 啟動 Brython -->
+<script>
+window.onload=function(){
+brython({debug:1, pythonpath:['/static/','./../downloads/py/']});
+}
+</script>
+<p></p><h1>HW1</h1>
 <p>在執行作業之前, 必須要仔細閱讀作業要求內容, 想像一下作業指定者為何要提出此一作業, 其目的為何, 然後再根據要求逐一安排時間完成.</p>
 <p>作業一的主題為網際動畫與 touch typing, 並要求學員要至 Github 申請帳號, 並將作業內容直接在課程網頁中執行 Brython (Browser Python), 完成後將程式碼放到各學員 Github 帳號下的 Gist 區域, 然後再將作業連結提交至課程網頁倉儲的 Discussion 區.</p>
 <p>另外, 除了要修改 Task1 頁面中動畫的程式外, 還要求使用者從 Cango 頁面, 將程式中的網際按鈕放到頁面, 以便控制程式的執行或中斷.</p>
@@ -336,8 +346,7 @@ def launchAnimation(ev):
  
 doc["power"].bind("click", launchAnimation)
 </pre>
-<p></p>
-<h2>run1</h2>
+<p></p><h2>run1</h2>
 <!-- 導入 brython 程式庫 -->
 <script src="/static/brython.js"></script>
 <script src="/static/brython_stdlib.js"></script>
