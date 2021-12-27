@@ -128,7 +128,7 @@ img.add_border {
                             <li><a href="./../blog/index.html">blog</a></li>
                         </ul>
                       </li>
-                     <li class='has-children'><a href='About.html'>About</a><ul class='dropdown'><li><a href='run.html'>run</a></li></ul><li class='has-children'><a href='Exam.html'>Exam</a><ul class='dropdown'><li><a href='w13.html'>w13</a></li></ul><li><a href='HW1.html'>HW1</a><li class='has-children'><a href='HW2.html'>HW2</a><ul class='dropdown'><li><a href='W12.html'>W12</a><li><a href='run1.html'>run1</a><li><a href='run2.html'>run2</a><li><a href='run3.html'>run3</a></li></ul><li><a href='HW3.html'>HW3</a><li><a href='Final Project.html'>Final Project</a></li>
+                     <li class='has-children'><a href='About.html'>About</a><ul class='dropdown'><li><a href='run.html'>run</a></li></ul><li class='has-children'><a href='Exam.html'>Exam</a><ul class='dropdown'><li><a href='w13.html'>w13</a></li></ul><li class='has-children'><a href='HW1.html'>HW1</a><ul class='dropdown'><li><a href='hw1_1.html'>hw1_1</a><li><a href='hw1_2.html'>hw1_2</a></li></ul><li class='has-children'><a href='HW2.html'>HW2</a><ul class='dropdown'><li><a href='W12.html'>W12</a><li><a href='run1.html'>run1</a><li><a href='run2.html'>run2</a><li><a href='run3.html'>run3</a></li></ul><li><a href='HW3.html'>HW3</a><li><a href='Final Project.html'>Final Project</a></li>
                       </ul>
                 </nav>
               </div>
@@ -139,120 +139,8 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">w13 << <a href='w13.html'>Previous</a> <a href='HW2.html'>Next</a> >> HW2<br /><h1>HW1</h1>
-<p><a href="https://ziyi8.github.io/cp2021_hw/content/run.html?src=https://gist.githubusercontent.com/ziyi8/62aa3b7982a6f1965cc3f17317a40434/raw/5da9548a9d12fda25dad52e8c0543e1a0527e31a/hw1-1.py">hw1-1</a>: 將左右碰撞移動的紅色方塊, 改為先移動到水平畫面中心點位置後, 接著上下碰撞移動.</p>
-<p><a href="https://ziyi8.github.io/cp2021_hw/content/run.html?src=https://gist.githubusercontent.com/ziyi8/d2ce433a014f34154546978e3e6c00a6/raw/bf9689723dd98a7e3f73e66bb82f4d099c70a2b7/hw1-2.py">hw1-2</a>: 加入與 <a href="https://mde.tw/cp2021/content/Cango.html">Cango 頁面</a> Fourbar 程式碼相同功能的啟動按鈕, 讓使用者可以利用按鈕啟動或中斷紅色方塊上下碰撞移動. 完成後請將程式碼存入個人 Gist 區.</p>
-<h4>程式碼說明:</h4>
-<p>hw1-1.py</p>
-<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># 從 browser 導入 html
-from browser import html
-
-# 從 browser 導入 document 並且對應為 doc
-
-from browser import document as doc
-
-# 導入 browser.timer
-
-import browser.timer
-
-# 建立 game-board canvas
-
-canvas = html.CANVAS(width = 400, height = 100)
-canvas.id = "game-board3"
-brython_div = doc["brython_div"]
-brython_div &lt;= canvas
-ctx = canvas.getContext("2d")
-px = 0
-py = 50
-width = 20
-height = 20
-speedx = 5
-speedy = 5
-
-# 定義一個 game() 函式
-
-def game():
-利用 global 關鍵字 將 px, py 與 speed 
-設為可在函式內改變對應內容 
-(意即, 這三個定義在函式外的全域變數,  
-在函式中分別位於等號左邊)
-    global px, py, width, height, speedx, speedy
-    ctx.clearRect(px, py, width, height)
-    ctx.fillStyle = "red"
-    px += speedx
-    if px &gt; 200 :
-        speedx = 0
-        py += speedy
-    if py &lt; 0 or (py + height) &gt; canvas.height:
-        speedy = -speedy
-    ctx.fillRect(px, py, width, height)
-    
-browser.timer.set_interval(game, 10)</pre>
-<p>hw1-2.py</p>
-<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># 從 browser 導入 html
-from browser import html
-# 從 browser 導入 document 並且對應為 doc
-from browser import document as doc
-# 導入 browser.timer
-from browser import timer
-
-# 建立 game-board canvas
-
-canvas = html.CANVAS(width = 400, height = 100)
-canvas.id = "game-board"
-brython_div = doc["brython_div"]
-brython_div &lt;= canvas
-ctx = canvas.getContext("2d")
-px = 0
-py = 50
-width = 20
-height = 20
-speedx = 2
-speedy = 2
-
-# 建立 button
-
-brython_div &lt;= html.BUTTON("啟動", id="power")
-
-def cube():
-    global px, py, width, height, speedx, speedy
-    ctx.clearRect(px, py, width, height)
-    ctx.fillStyle = "red"
-    px += speedx
-    if px &gt; 200 :
-        speedx = 0
-        py += speedy
-    if py &lt; 0 or (py + height) &gt; canvas.height:
-        speedy = -speedy
-    ctx.fillRect(px, py, width, height)
-
-cube()
-
-# 將 game 設為 None
-game = None
-
-def gametion(ev) :
-    global game
-    # 初始啟動,game 為 None
-    if game is None :
-         # 每 0.1 秒執行一次 draw 函式繪圖
-        game = timer.set_interval(cube, 10)
-        # 初始啟動後, 按鈕文字轉為"暫停"
-        doc['power'].text = '暫停'
-    elif game == 'hold':
-        # 當 anim 為 'hold' 表示曾經暫停後的啟動, 因此持續以 set_interval() 持續旋轉, 且將 power 文字轉為"暫停"
-        game = timer.set_interval(cube, 10)
-        doc['power'].text = '暫停'
-    else:
-        # 初始啟動後, 使用者再按 power, 此時 anim 非 None 也不是 'hold', 因此會執行 clear_interval() 暫停
-        # 且將 anim 變數設為 'hold', 且 power 文字轉為"繼續"
-        timer.clear_interval(game)
-        game = 'hold'
-        doc['power'].text = '繼續'
-        
-doc["power"].bind("click", gametion)
-</pre>
-<p></p><br />w13 << <a href='w13.html'>Previous</a> <a href='HW2.html'>Next</a> >> HW2</div>
+    <div id="tipue_search_content">w13 << <a href='w13.html'>Previous</a> <a href='hw1_1.html'>Next</a> >> hw1_1<br /><h1>HW1</h1>
+<br />w13 << <a href='w13.html'>Previous</a> <a href='hw1_1.html'>Next</a> >> hw1_1</div>
         
     <!-- footer -->
       <div class="container">

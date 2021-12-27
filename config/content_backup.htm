@@ -244,8 +244,8 @@ doc["w13_2"].bind('click', w13_2.do)
 ################################## w13_2 end
 </script>
 </p><h1>HW1</h1>
-<p><a href="https://ziyi8.github.io/cp2021_hw/content/run.html?src=https://gist.githubusercontent.com/ziyi8/62aa3b7982a6f1965cc3f17317a40434/raw/5da9548a9d12fda25dad52e8c0543e1a0527e31a/hw1-1.py">hw1-1</a>: 將左右碰撞移動的紅色方塊, 改為先移動到水平畫面中心點位置後, 接著上下碰撞移動.</p>
-<p><a href="https://ziyi8.github.io/cp2021_hw/content/run.html?src=https://gist.githubusercontent.com/ziyi8/d2ce433a014f34154546978e3e6c00a6/raw/bf9689723dd98a7e3f73e66bb82f4d099c70a2b7/hw1-2.py">hw1-2</a>: 加入與 <a href="https://mde.tw/cp2021/content/Cango.html">Cango 頁面</a> Fourbar 程式碼相同功能的啟動按鈕, 讓使用者可以利用按鈕啟動或中斷紅色方塊上下碰撞移動. 完成後請將程式碼存入個人 Gist 區.</p>
+<h3>hw1_1</h3>
+<p><a href="https://ziyi8.github.io/cp2021_hw/content/run.html?src=https://gist.githubusercontent.com/ziyi8/62aa3b7982a6f1965cc3f17317a40434/raw/6359b91f9fe4348c631ef55edb0ce0287a8d2e06/hw1_1.py">hw1_1</a>: 將左右碰撞移動的紅色方塊, 改為先移動到水平畫面中心點位置後, 接著上下碰撞移動.</p>
 <h4>程式碼說明:</h4>
 <p>hw1-1.py</p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># 從 browser 導入 html
@@ -291,7 +291,9 @@ def game():
         speedy = -speedy
     ctx.fillRect(px, py, width, height)
     
-browser.timer.set_interval(game, 10)</pre>
+browser.timer.set_interval(game, 10)</pre><h2>hw1_2</h2>
+<p><a href="https://gist.githubusercontent.com/ziyi8/d2ce433a014f34154546978e3e6c00a6/raw/77b167b0ff0c2442cc6527c1a1b1f7f855224062/hw1_2.py">hw1_2</a>: 加入與 <a href="https://mde.tw/cp2021/content/Cango.html">Cango 頁面</a> Fourbar 程式碼相同功能的啟動按鈕, 讓使用者可以利用按鈕啟動或中斷紅色方塊上下碰撞移動. 完成後請將程式碼存入個人 Gist 區.</p>
+<h4>程式碼說明:</h4>
 <p>hw1-2.py</p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># 從 browser 導入 html
 from browser import html
@@ -691,152 +693,7 @@ cgo.render(spurPath)
 <script src="https://mde.tw/cp2021/cmsimde/static/SVGpathUtils-6v03-min.js"></script>
 <script src="https://mde.tw/cp2021/cmsimde/static/sylvester.js"></script>
 <script src="https://mde.tw/cp2021/cmsimde/static/PrairieDraw.js"></script>
-</p><h1>Server</h1>
-<p>在電腦輔助設計室中的 11 台舊電腦, 因為第三磁區並沒有保護, 因此可以設定為 Flask 與 Fossil SCM server 主機.</p>
-<p>六台新電腦中的一台可以透過 <a href="https://support.microsoft.com/zh-tw/windows/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E9%81%A0%E7%AB%AF%E6%A1%8C%E9%9D%A2-5fe128d5-8fb1-7a23-3b8a-41e636865e8c">remote desktop</a> 連線至各分組的伺服器進行設定.</p>
-<p>至於在 Windows 10 中可以利用 <a href="https://nssm.cc/">https://nssm.cc/</a> 將應用程式設為 service.</p>
-<h4>Windows 10 中的動態課程網頁系統:</h4>
-<h4 style="padding-left: 30px;">以 waitress 執行 cmsimde/wsgi.py:</h4>
-<p style="padding-left: 60px;">python -m pip install waitress</p>
-<p>建立一個 waitress_server.py:</p>
-<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># 執行前, 必須要先利用 python -m pip install waitress 安裝 wairess 模組
-# 接著從 waitress 導入 serve
-from waitress import serve
- 
-# 導入 flaskapp
-"""
-在不將 cmsimde 目錄納入 sys.path 搜尋路徑時, 
-可以複製一份 cmsimde/nocache.py 至倉儲目錄. 
-或者將 cmsimde 納入系統搜尋路徑中, 
-且必須放在導入 flaskapp  之前
-"""
-import sys
-sys.path.append("./cmsimde")
-from cmsimde import flaskapp
- 
-# run flaskapp.app with production waitress
-serve(flaskapp.app, host='0.0.0.0', port=5000, url_scheme='https')</pre>
-<p>接著先除去 url_scheme='https' 後以 python waitress_server.py 執行. cmsimde 主機將可透過瀏覽器連結 <a href="http://server_ip:5000">http://server_ip:5000</a></p>
-<p>接下來則可以利用 <a href="https://www.stunnel.org/">Stunnel</a> 作為 https 代理主機, 作為 <a href="http://server_ip:5000">http://server_ip:5000</a> 與外部瀏覽器連接的代理轉接者.</p>
-<h4>stunnel.conf 設定內容:</h4>
-<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">[https]
-accept = 8443
-connect = 5000
-cert = fullchain.pem
-key = privkey.pem
-TIMEOUTclose = 0</pre>
-<p>cmsimde 系統的靜態網頁則可以利用 <a href="https://nginx.org/">Nginx</a> 伺服.</p>
-<p>Nginx 在 Ubuntu /etc/nginx/sites-available/default 中的設定:</p>
-<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">server {
-    listen 80;
-    listen [::]:80;
-    root /home/wcm2021/newcms;
-    index index.html;
-   
-    location /static {
-        alias /home/wcm2021/newcms/cmsimde/static/;
-    }
-   
-    location /downloads {
-        alias /home/wcm2021/newcms/downloads/;
-    }
-   
-    location /images {
-        alias /home/wcm2021/newcms/images/;
-    }
-   
-    location / {
-            try_files $uri $uri/ =404;
-    } 
-       
-    location /blog {
-        alias /home/wcm2021/cmsimfly/blog/;
-    }
-   
-    location /reveal {
-        alias /home/wcm2021/cmsimfly/reveal/;
-    }
-}
-   
-server {
-    listen 443 ssl;
-    #listen [::]:443 ssl ipv6only=on;
-    
-    location /static {
-        alias /home/wcm2021/cmsimfly/static/;
-    }
-    
-    location / {
-        include uwsgi_params;
-        uwsgi_pass  127.0.0.1:8080;
-    }
-    
-    #server_name ipv4_ip; 
-    #ssl on;
-    ssl_certificate /etc/stunnel/localhost.crt;
-    ssl_certificate_key /etc/stunnel/localhost.key;
-    ssl_session_timeout 5m;
-    ssl_protocols SSLv3 TLSv1 TLSv1.1 TLSv1.2;
-    ssl_ciphers "HIGH:!aNULL:!MD5 or HIGH:!aNULL:!MD5:!3DES";
-    ssl_prefer_server_ciphers on;
-    try_files $uri $uri/ =404;
-}
-    
-server {
-    #listen 89 default_server;
-    #listen [::]:89 default_server ipv6only=on;
-    
-    listen 8943 ssl;
-    #listen [::]:8943 ssl ipv6only=on;
-    
-    location /static {
-        alias /home/wcm2021/cmsimfly2/static/;
-    }
-    
-    location / {
-        include uwsgi_params;
-        uwsgi_pass  127.0.0.1:8082;
-    }
-    
-    #server_name ipv4_ip;
-    #ssl on;
-    ssl_certificate /etc/stunnel/localhost.crt;
-    ssl_certificate_key /etc/stunnel/localhost.key;
-    ssl_session_timeout 5m;
-    ssl_protocols SSLv3 TLSv1 TLSv1.1 TLSv1.2;
-    ssl_ciphers "HIGH:!aNULL:!MD5 or HIGH:!aNULL:!MD5:!3DES";
-    ssl_prefer_server_ciphers on;
-    try_files $uri $uri/ =404;
-}
-   
-server {
-    #listen 88 default_server;
-    #listen [::]:88 default_server ipv6only=on;
-    
-    listen 8843 ssl;
-    #listen [::]:8843 ssl ipv6only=on;
-    
-    location /static {
-        alias /home/wcm2021/newcms/cmsimde/static/;
-    }
-    
-    location / {
-        include uwsgi_params;
-        uwsgi_pass  127.0.0.1:8081;
-    }
-    
-    #server_name ipv4_ip;
-    #ssl on;
-    ssl_certificate /etc/stunnel/localhost.crt;
-    ssl_certificate_key /etc/stunnel/localhost.key;
-    ssl_session_timeout 5m;
-    ssl_protocols SSLv3 TLSv1 TLSv1.1 TLSv1.2;
-    ssl_ciphers "HIGH:!aNULL:!MD5 or HIGH:!aNULL:!MD5:!3DES";
-    ssl_prefer_server_ciphers on;
-    try_files $uri $uri/ =404;
-}</pre>
-<p></p>
-<h1>HW3</h1>
+</p><h1>HW3</h1>
 <p></p>
 <p>HW3 - AI 貪食蛇佔學期成績 30%.</p>
 <p><span style="background-color: #ffff99;">HW3 必須在 2021.12.22 22:00 之前完成.</span></p>

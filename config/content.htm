@@ -244,8 +244,8 @@ doc["w13_2"].bind('click', w13_2.do)
 ################################## w13_2 end
 </script>
 </p><h1>HW1</h1>
-<p><a href="https://ziyi8.github.io/cp2021_hw/content/run.html?src=https://gist.githubusercontent.com/ziyi8/62aa3b7982a6f1965cc3f17317a40434/raw/5da9548a9d12fda25dad52e8c0543e1a0527e31a/hw1-1.py">hw1-1</a>: 將左右碰撞移動的紅色方塊, 改為先移動到水平畫面中心點位置後, 接著上下碰撞移動.</p>
-<p><a href="https://ziyi8.github.io/cp2021_hw/content/run.html?src=https://gist.githubusercontent.com/ziyi8/d2ce433a014f34154546978e3e6c00a6/raw/bf9689723dd98a7e3f73e66bb82f4d099c70a2b7/hw1-2.py">hw1-2</a>: 加入與 <a href="https://mde.tw/cp2021/content/Cango.html">Cango 頁面</a> Fourbar 程式碼相同功能的啟動按鈕, 讓使用者可以利用按鈕啟動或中斷紅色方塊上下碰撞移動. 完成後請將程式碼存入個人 Gist 區.</p>
+<h3>hw1_1</h3>
+<p><a href="https://ziyi8.github.io/cp2021_hw/content/run.html?src=https://gist.githubusercontent.com/ziyi8/62aa3b7982a6f1965cc3f17317a40434/raw/6359b91f9fe4348c631ef55edb0ce0287a8d2e06/hw1_1.py">hw1_1</a>: 將左右碰撞移動的紅色方塊, 改為先移動到水平畫面中心點位置後, 接著上下碰撞移動.</p>
 <h4>程式碼說明:</h4>
 <p>hw1-1.py</p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># 從 browser 導入 html
@@ -291,7 +291,9 @@ def game():
         speedy = -speedy
     ctx.fillRect(px, py, width, height)
     
-browser.timer.set_interval(game, 10)</pre>
+browser.timer.set_interval(game, 10)</pre><h2>hw1_2</h2>
+<p><a href="https://ziyi8.github.io/cp2021_hw/content/run.html?src=https://gist.githubusercontent.com/ziyi8/d2ce433a014f34154546978e3e6c00a6/raw/77b167b0ff0c2442cc6527c1a1b1f7f855224062/hw1_2.py">hw1_2</a>: 加入與 <a href="https://mde.tw/cp2021/content/Cango.html">Cango 頁面</a> Fourbar 程式碼相同功能的啟動按鈕, 讓使用者可以利用按鈕啟動或中斷紅色方塊上下碰撞移動. 完成後請將程式碼存入個人 Gist 區.</p>
+<h4>程式碼說明:</h4>
 <p>hw1-2.py</p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># 從 browser 導入 html
 from browser import html
