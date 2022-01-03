@@ -137,7 +137,12 @@ function doSave(storage_id, filename){
 <script src="https://mde.tw/cp2021/cmsimde/static/sylvester.js"></script>
 <script src="https://mde.tw/cp2021/cmsimde/static/PrairieDraw.js"></script>
 </p>
-<p><button id="add1to100">add 1 to 100</button><button id="p261">p261</button><button id="rocflag">ROC flag</button><button id="w13_1">w13_1</button><button id="w13_2">w13_2</button><button id="final1">final1</button></p>
+<!-- ######################  button 開始 ###################### -->
+<p></p>
+<!-- ######################  button 開始 ###################### -->
+<p></p>
+<!-- ######################  button 開始 ###################### -->
+<p><button id="hw1_1"> hw1_1</button><button id="hw1_2"> hw1_2</button><button id="add1to100">add 1 to 100</button><button id="add1to10">add 1 to 10</button><button id="p261">p261</button><button id="rocflag">ROC flag</button><button id="w13_1">w13_1</button><button id="w13_2">w13_2</button><button id="final1">final1</button></p>
 <p><!-- ######################  editor1 開始 ###################### --></p>
 <p><!-- 用來顯示程式碼的 editor 區域 --></p>
 <div id="kw_editor1" style="width: 600px; height: 300px;"></div>
@@ -218,10 +223,26 @@ class button2:
         Ace2.editor.scrollToRow(0)
         Ace2.editor.gotoLine(0)
         Ace2.run()
-
-add1to100_url = "https://gist.githubusercontent.com/mdecourse/0229a8a017091476a79700b8a190f185/raw/c48e37714f055c3a0027cbfef59e442a6ef659b9/from_1_add_to_100_1.py"
+################################# hw1_1start 
+hw1_1_url = "https://gist.githubusercontent.com/ziyi8/62aa3b7982a6f1965cc3f17317a40434/raw/6359b91f9fe4348c631ef55edb0ce0287a8d2e06/hw1_1.py"
+hw1_1 = button2(hw1_1_url)
+doc["hw1_1"].bind('click',hw1_1.do)
+################################## final1 end
+################################# hw1_2start 
+hw1_2_url = "https://gist.githubusercontent.com/ziyi8/d2ce433a014f34154546978e3e6c00a6/raw/77b167b0ff0c2442cc6527c1a1b1f7f855224062/hw1_2.py"
+hw1_2= button2(hw1_2_url)
+doc["hw1_2"].bind('click',hw1_2.do)
+################################## hw1_2 end
+################################# add1to100 start 
+add1to100_url = "https://gist.githubusercontent.com/ziyi8/a1b4939d8137eab6e153a5f95e500fe4/raw/a32f058bead6e185599b6a4f498cd3a1353d6044/1%2520add%2520to%2520100.py"
 add1to100 = button2(add1to100_url)
 doc["add1to100"].bind('click', add1to100.do)
+################################## add1to10 end
+################################# add1to10 start 
+add1to10_url = "https://gist.githubusercontent.com/ziyi8/a1b4939d8137eab6e153a5f95e500fe4/raw/a32f058bead6e185599b6a4f498cd3a1353d6044/1%2520add%2520to%252010.py"
+add1to10 = button2(add1to10_url)
+doc["add1to10"].bind('click', add1to10.do)
+################################## add1to10 end
 ################################# p261 start 
 p261_url = "https://gist.githubusercontent.com/mdecourse/2f56974a40da7a218dbaef376a5b4ca4/raw/980606effcd29635307d6474718cd4a7ef016747/p261.py"
 p261 = button2(p261_url)
@@ -243,7 +264,7 @@ w13_2 = button2(w13_2_url)
 doc["w13_2"].bind('click', w13_2.do)
 ################################## w13_2 end
 ################################# final1start 
-final1_url = "https://gist.githubusercontent.com/ziyi8/083332dbed933f3aa59e5383da0ed9ae/raw/17e794c9bf54d45e892152a02e4d85e743760eb2/final1.py"
+final1_url = "https://gist.githubusercontent.com/ziyi8/083332dbed933f3aa59e5383da0ed9ae/raw/dda0a7dc307cd237cbadca146c62072032444ccf/final1.py"
 final1 = button2(final1_url)
 doc["final1"].bind('click', final1.do)
 ################################## final1 end
